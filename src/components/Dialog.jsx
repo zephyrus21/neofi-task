@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import cross from "../assets/cross.svg";
 import search from "../assets/search.svg";
 import tick from "../assets/tick.svg";
@@ -9,6 +10,19 @@ const Dialog = ({
   onTokenClickHandler,
   selectedToken,
 }) => {
+  const [query, setQuery] = useState("");
+
+  const getFilteredItems = (query, tokenData) => {
+    if (!query) {
+      return tokenData;
+    }
+    return tokenData.filter((token) =>
+      token.name.toLowerCase().includes(query)
+    );
+  };
+
+  const filteredItems = getFilteredItems(query, tokenData);
+
   return (
     <div className='bg-bg3 p-12 text-neutral-300 tertiary w-[400px] flex flex-col gap-4 border border-gray-600 rounded-xl relative'>
       <button
@@ -19,12 +33,13 @@ const Dialog = ({
       <div className='relative'>
         <img src={search} alt='search' className='absolute left-3 bottom-3' />
         <input
+          onChange={(e) => setQuery(e.target.value)}
           type='text'
           placeholder='Search chains'
           className='rounded-full bg-transparent border border-[#6E56F840] pl-10 p-2 w-full'
         />
       </div>
-      {tokenData.map((token) => (
+      {filteredItems.map((token) => (
         <button
           onClick={(e) => onTokenClickHandler(e, token)}
           key={token.symbol}

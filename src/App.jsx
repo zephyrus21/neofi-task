@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "./components/Box";
 import NavBar from "./components/NavBar";
 import Dialog from "./components/Dialog";
@@ -30,8 +30,31 @@ const App = () => {
       symbol: "sol",
     },
   ];
+  const [websocket, setWebsocket] = useState(null);
+  const [currentPrice, setCurrentPrice] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const [token, setToken] = useState(tokenData[0]);
+
+  const handleWebSocket = (url) => {
+    // close existing WebSocket connection if it exists
+    if (websocket) websocket.close();
+
+    const newWebsocket = new WebSocket(url);
+
+    newWebsocket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      // console.log(message);
+      setCurrentPrice(message.p * 80);
+    };
+
+    setWebsocket(newWebsocket);
+  };
+
+  useEffect(() => {
+    handleWebSocket(
+      `wss://stream.binance.com:9443/ws/${token.symbol}usdt@trade`
+    );
+  }, [token.symbol]);
 
   const clickHandler = () => {
     setIsClicked(!isClicked);
@@ -61,7 +84,12 @@ const App = () => {
       )}
       <NavBar />
       <div className='flex items-center justify-center h-screen'>
-        <Box isClicked={isClicked} clickHandler={clickHandler} token={token} />
+        <Box
+          isClicked={isClicked}
+          clickHandler={clickHandler}
+          token={token}
+          currentPrice={currentPrice}
+        />
       </div>
     </div>
   );

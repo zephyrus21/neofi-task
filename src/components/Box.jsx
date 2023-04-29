@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import arrow from "../assets/arrow.svg";
 
-const Box = ({ clickHandler, token }) => {
-  const [currentPrice, setCurrentPrice] = useState("");
+const Box = ({ clickHandler, token, currentPrice }) => {
   const [amount, setAmount] = useState("");
   const [noOfTokens, setNoOfTokens] = useState("");
 
@@ -12,20 +11,6 @@ const Box = ({ clickHandler, token }) => {
     setAmount(e.target.value);
     setNoOfTokens(e.target.value / currentPrice);
   };
-
-  useEffect(() => {
-    const ws = new WebSocket(
-      `wss://stream.binance.com:9443/ws/${token.symbol}usdt@trade`
-    );
-    ws.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      console.log(message);
-      setCurrentPrice(message.p * 80);
-    };
-    ws.onclose = () => {
-      console.log("Connection Closed!");
-    };
-  }, [token]);
 
   return (
     <div className='bg-bg p-10 text-neutral-300 tertiary w-[460px] flex flex-col gap-6 border border-gray-600 rounded-xl relative'>
