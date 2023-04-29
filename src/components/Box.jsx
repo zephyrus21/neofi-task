@@ -19,7 +19,11 @@ const Box = ({ clickHandler, token }) => {
     );
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
+      console.log(message);
       setCurrentPrice(message.p * 80);
+    };
+    ws.onclose = () => {
+      console.log("Connection Closed!");
     };
   }, [token]);
 
@@ -57,7 +61,7 @@ const Box = ({ clickHandler, token }) => {
         />
       </div>
       <div className='flex flex-col gap-3'>
-        <p>Estimate Number of {token.symbol.toUpperCase()} You will Get</p>
+        <p>Estimate Number of {token.symbol} You will Get</p>
         <input
           className='bg-bg2 rounded-lg px-6 py-3 font-semibold text-xl text-secondary'
           type='number'

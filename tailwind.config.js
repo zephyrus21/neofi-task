@@ -8,6 +8,8 @@ export default {
         secondary: "#6F6F7E",
         bg: "#0A0818",
         bg2: "#1C1731",
+        bg3: "#181626",
+        bg4: "#242044",
       },
       backgroundImage: {
         background:
