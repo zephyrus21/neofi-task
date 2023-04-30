@@ -6,12 +6,12 @@
   content: "";
   position: absolute;
   top: 30%;
-  left: -42%;
+  left: -41.5%;
   width: 25px;
   height: 25px;
-  border: 3px solid #0a0817;
-  border-top-right-radius: 20px;
-  box-shadow: 6px -10px 0 #040406;
+  border: 2px solid #0a0817;
+  border-top-right-radius: 16px;
+  box-shadow: 0.4px -0.4px 0 0.4px #6f6f7e, 6px -10px 0 #040406;
   background-color: #0a0817;
   background: transparent;
 }
@@ -20,16 +20,16 @@
   content: "";
   position: absolute;
   top: 30%;
-  right: -42%;
+  right: -41.5%;
   width: 25px;
   height: 25px;
-  border: 3px solid #0a0817;
-  border-top-left-radius: 20px;
-  box-shadow: -6px -10px 0 #040406;
+  border: 2px solid #0a0817;
+  border-top-left-radius: 16px;
+  box-shadow: -0.4px -0.4px 0 0.4px #6f6f7e, -6px -10px 0 #040406;
   background-color: #0a0817;
   background: transparent;
 }
 
 .icon {
-  box-shadow: 0 -10px 0 0.8px black, 0 0 0 0.8px #6f6f7e;
+  box-shadow: 0 -10px 0 1px black, 0 0 0 1px #6f6f7e;
 }

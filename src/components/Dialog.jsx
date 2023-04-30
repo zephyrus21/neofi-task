@@ -43,11 +43,13 @@ const Dialog = ({
         <button
           onClick={(e) => onTokenClickHandler(e, token)}
           key={token.symbol}
-          className={`flex items-center gap-2 px-4 py-3 ${
+          className={`flex items-center justify-between gap-2 px-4 py-3 ${
             selectedToken === token.symbol ? "bg-bg4" : ""
           } bg-opacity-30 rounded-lg`}>
-          <img src={`${token.symbol}.png`} alt='' className='h-6 w-6' />
-          <p>{token.name}</p>
+          <div className='flex items-center gap-2'>
+            <img src={`${token.symbol}.png`} alt='' className='h-6 w-6' />
+            <p>{token.name}</p>
+          </div>
           {selectedToken === token.symbol && <img src={tick} alt='tick' />}
         </button>
       ))}
