@@ -14,8 +14,7 @@ export default {
       backgroundImage: {
         background:
           "linear-gradient(94.37deg, #3387D5 -5.94%, #7A06C9 115.34%)",
-        border:
-          "linear-gradient(white, white) padding-box, linear-gradient(to right, darkblue, darkorchid) border-box",
+        border: "linear-gradient(#6F6F7E, transparent)",
       },
     },
   },

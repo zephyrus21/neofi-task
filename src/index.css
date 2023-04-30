@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.icon::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: -42%;
+  width: 25px;
+  height: 25px;
+  border: 3px solid #0a0817;
+  border-top-right-radius: 20px;
+  box-shadow: 6px -10px 0 #040406;
+  background-color: #0a0817;
+  background: transparent;
+}
+
+.icon::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  right: -42%;
+  width: 25px;
+  height: 25px;
+  border: 3px solid #0a0817;
+  border-top-left-radius: 20px;
+  box-shadow: -6px -10px 0 #040406;
+  background-color: #0a0817;
+  background: transparent;
+}
+
+.icon {
+  box-shadow: 0 -10px 0 0.8px black, 0 0 0 0.8px #6f6f7e;
+}
